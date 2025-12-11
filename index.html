@@ -1,0 +1,242 @@
+<!doctype html> <!-- Diz ao navegador que é um documento HTML moderno -->
+<html lang="pt-BR"> <!-- Define o idioma da página -->
+<head>
+  <meta charset="utf-8" /> <!-- Define o padrão de caracteres -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" /> <!-- Deixa o site responsivo -->
+  <title>Currículo — Seu Nome</title> <!-- Título da aba do navegador -->
+
+  <style>
+    /* ---------- VARIÁVEIS E CONFIGURAÇÕES GERAIS ---------- */
+    :root{
+      --bg:#0f1724; /* Cor de fundo */
+      --card:#0b1a2b; /* Cor do cartão */
+      --accent:#06b6d4; /* Cor de destaque */
+      --text:#e6eef6; /* Cor do texto */
+      --muted:#9fb3c6; /* Cor de texto fraca */
+      font-family: Inter, system-ui, Arial; /* Fonte padrão */
+    }
+
+    *{ box-sizing:border-box } /* Garante que padding não quebra o layout */
+
+    body{
+      margin:0; /* Remove margem padrão */
+      min-height:100vh; /* Altura mínima da tela inteira */
+      display:flex; /* Centraliza o conteúdo */
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg,#2800bb 0%, #0e0909 100%); /* Fundo degradê */
+      color:var(--text); /* Cor do texto */
+      padding:24px;
+    }
+
+    /* ---------- CONTAINER PRINCIPAL ---------- */
+    .card{
+      width:100%;
+      max-width:900px; /* Largura máxima */
+      background:linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(255,255,255,0.01)); /* Fundo suave */
+      border:1px solid rgba(255,255,255,0.04); /* Borda leve */
+      border-radius:12px; /* Arredondamento */
+      box-shadow:0 6px 30px rgba(2,6,23,0.6); /* Sombra */
+      overflow:hidden;
+      display:grid; /* Layout em colunas */
+      grid-template-columns: 260px 1fr; /* Coluna lateral + conteúdo */
+    }
+
+    /* ---------- LATERAL (AVATAR E INFORMAÇÕES) ---------- */
+    .sidebar{
+      padding:28px;
+      background:linear-gradient(180deg, rgba(6,11,20,0.6), rgba(6,11,20,0.4)); /* Fundo escuro */
+      border-right:1px solid rgba(255,255,255,0.02);
+      display:flex;
+      flex-direction:column;
+      gap:18px; /* Espaçamento entre itens */
+      align-items:center;
+      text-align:center;
+    }
+
+    .avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;   /* Preenche o círculo sem distorcer */
+  border-radius:50%;  /* Deixa a imagem redonda */
+}
+
+
+    .name{ font-size:18px; font-weight:700; margin-top:6px }
+    .role{ color:var(--muted); font-size:13px }
+
+    .side-list{
+      width:100%;
+      text-align:left;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .side-list dt{ font-weight:700; color:var(--text); margin-top:10px }
+    .side-list dd{ margin:4px 0 0 0 }
+
+    /* ---------- ÁREA PRINCIPAL ---------- */
+    .main{
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    /* ---------- BOTÕES DE ABA ---------- */
+    .tabs{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .tab{
+      padding:8px 12px;
+      border-radius:8px;
+      background:transparent;
+      color:var(--muted);
+      cursor:pointer;
+      border:1px solid transparent;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    .tab.active{
+      background:linear-gradient(90deg, rgba(6,182,212,0.12), rgba(124,58,237,0.06));
+      color:var(--accent);
+      border-color: rgba(6,182,212,0.12);
+      box-shadow:0 4px 14px rgba(7,15,22,0.5) inset;
+    }
+
+    .content{
+      min-height:200px;
+    }
+
+    h2{ margin:0 0 8px 0; font-size:18px }
+    p{ color:var(--muted); line-height:1.5 }
+    ul{ margin-left:18px; color:var(--muted) }
+
+    .btn{
+      display:inline-block;
+      margin-top:6px;
+      padding:8px 12px;
+      background:var(--accent);
+      color:#290404;
+      font-weight:700;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:13px;
+    }
+
+    /* ---------- RESPONSIVIDADE ---------- */
+    @media (max-width:720px){
+      .card{ grid-template-columns:1fr } /* Remove coluna lateral */
+      .sidebar{
+        flex-direction:row;
+        gap:12px;
+        padding:16px;
+        align-items:center;
+        text-align:left;
+      }
+      .main{ padding:18px }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- CARD PRINCIPAL -->
+  <article class="card">
+
+    <!-- LATERAL -->
+    <aside class="sidebar">
+      <div class="avatar">
+    <img src="img/download.jpg" alt="Minha foto">
+</div>
+ <!-- Avatar com inicial -->
+      <div class="name">Yan de Oliveira</div> <!-- Nome -->
+      <div class="role">Desenvolvedor / Estudante</div> <!-- Cargo -->
+
+      <!-- Lista de informações -->
+      <dl class="side-list">
+        <dt>Local</dt>
+        <dd>Colatina, ES</dd>
+
+        <dt>Principal</dt>
+        <dd>HTML • CSS • JavaScript• Java</dd>
+      </dl>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL COM ABAS -->
+    <section class="main">
+
+      <!-- BOTÕES DE ABA -->
+      <nav class="tabs">
+        <button class="tab active" data-tab="sobre">Sobre</button>
+        <button class="tab" data-tab="experiencia">Experiência</button>
+        <button class="tab" data-tab="contato">Contato</button>
+      </nav>
+
+      <!-- CONTEÚDO DAS ABAS -->
+      <div class="content">
+
+        <!-- Aba 1 -->
+        <div class="panel" id="sobre">
+          <h2>Sobre mim</h2>
+          <p>Olá! Meu nome é <strong>Yan</strong>. Sou apaixonado por desenvolvimento de sistemas.<br>Pretendo evoluir no mercado de trabalho e progredir junto a empresa.<br>atualmente faço curso de tecnico de desenvolvimento de sistemas na instituição <strong>SENAC</strong></p>
+        </div>
+
+        <!-- Aba 2 -->
+        <div class="panel" id="experiencia" style="display:none">
+          <h2>Experiência & Habilidades</h2>
+          <ul>
+            <li>HTML/CSS básico</li>
+            <li>JavaScript básico</li>
+          </ul>
+        </div>
+
+        <!-- Aba 3 -->
+        <div class="panel" id="contato" style="display:none">
+          <h2>Contato</h2>
+          <ul>
+            <li>Email: yandeoliveira84@gmail.com</li>
+            <li>GitHub: github.com/yanlv-criar</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </article>
+
+  <!-- SCRIPT PARA TROCAR ABAS -->
+  <script>
+    // Seleciona todos os botões de aba
+    const tabs = document.querySelectorAll('.tab');
+
+    // Guarda os painéis em um objeto
+    const panels = {
+      sobre: document.getElementById('sobre'),
+      experiencia: document.getElementById('experiencia'),
+      contato: document.getElementById('contato')
+    };
+
+    // Para cada botão...
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+
+        // Remove seleção de todas as abas
+        tabs.forEach(t => t.classList.remove('active'));
+
+        // Ativa a aba clicada
+        btn.classList.add('active');
+
+        // Esconde todos os painéis
+        Object.keys(panels).forEach(k => panels[k].style.display = 'none');
+
+        // Mostra apenas o painel clicado
+        panels[btn.dataset.tab].style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
